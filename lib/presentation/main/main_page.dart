@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gocap_app/presentation/home/page/home_menu_page.dart';
 
 class MainPage extends StatefulWidget {
+  const MainPage({super.key});
   @override
   State<StatefulWidget> createState() => _MainPageState();
 }
@@ -26,17 +27,6 @@ class _MainPageState extends State<MainPage> {
     Widget build(BuildContext context) {
       return Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          title: const Text('Go Tancap'),
-          backgroundColor: Colors.greenAccent,
-          elevation: 4,
-          actions: [
-            IconButton(
-              icon : const Icon(Icons.notifications),
-              onPressed: () {}, 
-            )
-          ],
-        ),
         body: _pages[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
