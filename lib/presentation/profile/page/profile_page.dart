@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 import 'package:gocap_app/presentation/auth/detail_profile_page/page/detail_profile_page.dart';
-=======
->>>>>>> 59a59242f6d15088186ad59727a1c3bf3ac535fd
 import 'package:gocap_app/presentation/edit_profile_page/page/edit_profile_page.dart';
 import 'package:gocap_app/presentation/profile/widget/build_activity.dart';
 import 'package:gocap_app/presentation/profile/widget/build_dashboard.dart';
@@ -106,11 +103,7 @@ class _ProfilePageState extends State<ProfilePage>
                                 InkWell(
                                   borderRadius: BorderRadius.circular(30),
                                   onTap: (){
-<<<<<<< HEAD
                                     Navigator.push(context, MaterialPageRoute(builder: (context) => DetailProfilePage()));
-=======
-
->>>>>>> 59a59242f6d15088186ad59727a1c3bf3ac535fd
                                   },
                                   child: Container(
                                     padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
