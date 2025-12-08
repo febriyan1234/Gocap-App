@@ -112,6 +112,7 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+<<<<<<< HEAD
   http_parser:
     dependency: transitive
     description:
@@ -120,6 +121,8 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.1.2"
+=======
+>>>>>>> 59a59242f6d15088186ad59727a1c3bf3ac535fd
   leak_tracker:
     dependency: transitive
     description:
@@ -240,6 +243,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.8"
+<<<<<<< HEAD
   provider:
     dependency: "direct main"
     description:
@@ -248,6 +252,8 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.5+1"
+=======
+>>>>>>> 59a59242f6d15088186ad59727a1c3bf3ac535fd
   shared_preferences:
     dependency: "direct main"
     description:

@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:gocap_app/model/store_model.dart';
 import 'package:gocap_app/presentation/auth/login/page/login_page.dart';
 import 'package:gocap_app/presentation/home/provider/home_provider.dart';
 import 'package:gocap_app/presentation/profile/page/profile_page.dart';
 import 'package:provider/provider.dart';
+=======
+import 'package:gocap_app/presentation/auth/login/page/login_page.dart';
+import 'package:gocap_app/presentation/profile/page/profile_page.dart';
+>>>>>>> 59a59242f6d15088186ad59727a1c3bf3ac535fd
 import 'package:shared_preferences/shared_preferences.dart';
 
 part '../widget/store_item.dart';
@@ -13,6 +18,7 @@ part '../widget/list_pesan_camilan.dart';
 part '../widget/list_promo.dart';
 part '../widget/appbar_home.dart';
 
+<<<<<<< HEAD
 class HomeMenuPage extends StatefulWidget {
   const HomeMenuPage({super.key});
 
@@ -33,6 +39,11 @@ class HomeMenuPageState extends State<HomeMenuPage> {
       Provider.of<HomeProvider>(context, listen: false).getStores();
     });
   }
+=======
+
+ class HomeMenuPage extends StatelessWidget {
+    const HomeMenuPage({super.key});
+>>>>>>> 59a59242f6d15088186ad59727a1c3bf3ac535fd
 
     final List<Map<String, String>> payments= const [
       {
@@ -101,7 +112,10 @@ class HomeMenuPageState extends State<HomeMenuPage> {
 
     @override
     Widget build(BuildContext context) {
+<<<<<<< HEAD
       final homeProv = Provider.of<HomeProvider>(context);
+=======
+>>>>>>> 59a59242f6d15088186ad59727a1c3bf3ac535fd
       return Scaffold(
         appBar: _AppBarHome(
           onTapQr: () {
@@ -123,6 +137,7 @@ class HomeMenuPageState extends State<HomeMenuPage> {
             }
           },
         ),
+<<<<<<< HEAD
         body: Builder(
           builder: (context) {
             if (homeProv.isLoading) {
@@ -239,6 +254,114 @@ class HomeMenuPageState extends State<HomeMenuPage> {
               ],
             );
           }
+=======
+        body: ListView(
+          children: [
+            GridView.builder(
+              padding: EdgeInsets.all(16),
+              itemCount: stores.length,
+              shrinkWrap: true,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 4,
+                mainAxisSpacing: 12,
+                crossAxisSpacing: 8,
+                childAspectRatio: 1
+              ),
+              itemBuilder: (context, index) {
+                final store = stores[index];
+                return _StoreItem(
+                  icon: store["image"] ?? "", 
+                  label: store["name"] ?? "",
+                  onTapItem: () {
+                    if (store["name"] == "Semua") {
+                      _showStoreBottomSheet(context);
+                    }
+                  },
+                );
+              }
+            ),
+            SizedBox(
+              height: 70,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
+                padding: const EdgeInsets.only(left: 16),
+                itemCount: payments.length,
+                itemBuilder: (context, index) {
+                  final payment = payments[index];
+                  return _PaymenItem(
+                    icon: payment["image"] ?? "", 
+                    label: payment ["name"] ?? "",
+                    description: payment ["description"] ?? "", 
+                    onTapItem: () {}
+                  );
+                }, 
+              ),
+            ),
+            Padding(
+              padding: EdgeInsetsGeometry.fromLTRB(16, 24, 0, 8),
+              child: Text(
+                "Promo Hari Ini",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+            ),
+            SizedBox(
+              height: 200,
+              child: ListView.builder(
+                itemCount: promos.length,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  final promo = promos[index];
+                  return _ListPromo(
+                    image: promo["image"] ?? "", 
+                    title: promo["title"] ?? "",
+                  );
+                }
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(16, 24, 0, 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Pesan makan malam dari",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  IconButton(
+                    onPressed: () {
+
+                    }, 
+                    icon: Icon(Icons.arrow_circle_right_outlined)
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 300,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.only(left: 16),
+                itemCount: pesans.length,
+                itemBuilder: (context, index) {
+                  final pesan = pesans[index];
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 16.0),
+                    child:  _ListPesanCamilan(
+                      image: pesan["image"] ?? "",
+                      name: pesan["name"] ?? "",
+                      distance: pesan["distance"] ?? "",
+                      rating: pesan["rating"] ?? "",
+                      promo: pesan["promo"] ?? "",
+                      isAds: pesan["isAds"] ?? false,
+                      onTapItem: () {},
+                    ),
+                  );
+                }
+              ),
+            ),
+          ],
+>>>>>>> 59a59242f6d15088186ad59727a1c3bf3ac535fd
         ) ,
       );
     }

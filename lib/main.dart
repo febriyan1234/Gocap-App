@@ -33,12 +33,15 @@ class MyApp extends StatelessWidget {
             return Colors.grey.shade400;
           }),
         ) 
+<<<<<<< HEAD
       ),
       home: MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (_) => HomeProvider()),
         ],
         child: MainPage(),
+=======
+>>>>>>> 59a59242f6d15088186ad59727a1c3bf3ac535fd
       ),
     );
   }
