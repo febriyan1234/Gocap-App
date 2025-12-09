@@ -5,7 +5,6 @@ class _CircleIcon extends StatelessWidget{
   
 
   const _CircleIcon({
-    super.key, 
     required this.icon,
   });
   @override
