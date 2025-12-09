@@ -30,74 +30,9 @@ class HomeMenuPageState extends State<HomeMenuPage> {
     //   homeProv.getStores();
     // });
      WidgetsBinding.instance.addPostFrameCallback((_) {
-      Provider.of<HomeProvider>(context, listen: false).getStores();
+      Provider.of<HomeProvider>(context, listen: false).loadHomeData();
     });
   }
-
-    final List<Map<String, String>> payments= const [
-      {
-        "name": "Link",
-        "description": "Superbank",
-        "image": "https://cdn-icons-png.flaticon.com/512/428/428641.png"
-      },
-      {
-        "name": "Bayar sekaligus",
-        "description": "Top up & tagihan",
-        "image": "https://cdn-icons-png.flaticon.com/512/7988/7988932.png"
-      },
-      {
-        "name": "Event",
-        "description": "Ayo Ikuti",
-        "image": "https://cdn-icons-png.flaticon.com/512/8003/8003357.png"
-      },
-      {
-        "name": "Go point",
-        "description": "Point Gocap",
-        "image": "https://cdn-icons-png.flaticon.com/512/8003/8003357.png"
-      },
-    ];
-
-  final List<Map<String, dynamic>> pesans = const [
-      {
-        "image": "https://franchisepedia.id/wp-content/uploads/2022/02/LOGO-KOPTE-1-1024x1024.jpg",
-        "name": "Kopte by Dum Group - Suradita",
-        "distance": "1.6 km",
-        "rating": 4.8,
-        "promo": "Diskon Rp4.000",
-        "isAds": true,
-      },
-      {
-        "image": "https://www.sunwaycarnival.com/static/shops/b7f92e1909fea090e598f7c1af7aa927/w768.png",
-        "name": "Mixue - Suradita",
-        "distance": "i.7 km",
-        "rating": 5.0,
-        "promo": "Diskon Rp4.000",
-        "isAds": false,
-      },
-      {
-        "image": "https://cdn.vectorstock.com/i/1000v/56/54/dimsum-logo-cute-dim-sum-character-vector-46975654.jpg",
-        "name": "Dimsum korpri",
-        "distance": "3.8 km",
-        "rating": 4.6,
-        "promo": "Diskon Rp6.000",
-        "isAds": false,
-      }
-    ];
-
-    final List<Map<String, String>> promos = const [
-      {
-        "image": "https://static.vecteezy.com/system/resources/previews/020/011/915/non_2x/food-promotion-banner-free-editor_template.jpeg",
-        "title": "Pasta 35% OFF",
-      },
-      {
-        "image": "https://img.pikbest.com/backgrounds/20210706/creative-food-pizza-promotion-banner-template_6047756.jpg!sw800",
-        "title": "Pizza 50% OFF",
-      },
-      {
-        "image": "https://crm.id/blog/wp-content/uploads/2025/05/cara-promosi-makanan.png",
-        "title": "Spageti Special",
-      }
-    ];
 
     @override
     Widget build(BuildContext context) {
@@ -162,13 +97,13 @@ class HomeMenuPageState extends State<HomeMenuPage> {
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
                     padding: const EdgeInsets.only(left: 16),
-                    itemCount: payments.length,
+                    itemCount: homeProv.payments.length,
                     itemBuilder: (context, index) {
-                      final payment = payments[index];
+                      final payment = homeProv.payments[index];
                       return _PaymenItem(
-                        icon: payment["image"] ?? "", 
-                        label: payment ["name"] ?? "",
-                        description: payment ["description"] ?? "", 
+                        icon: payment.image, 
+                        label: payment.name,
+                        description: payment.description, 
                         onTapItem: () {}
                       );
                     }, 
@@ -184,13 +119,13 @@ class HomeMenuPageState extends State<HomeMenuPage> {
                 SizedBox(
                   height: 200,
                   child: ListView.builder(
-                    itemCount: promos.length,
+                    itemCount: homeProv.promos.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
-                      final promo = promos[index];
+                      final promo = homeProv.promos[index];
                       return _ListPromo(
-                        image: promo["image"] ?? "", 
-                        title: promo["title"] ?? "",
+                        image: promo.image, 
+                        title: promo.title,
                       );
                     }
                   ),
@@ -218,18 +153,18 @@ class HomeMenuPageState extends State<HomeMenuPage> {
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     padding: const EdgeInsets.only(left: 16),
-                    itemCount: pesans.length,
+                    itemCount: homeProv.foods.length,
                     itemBuilder: (context, index) {
-                      final pesan = pesans[index];
+                      final food = homeProv.foods[index];
                       return Padding(
                         padding: const EdgeInsets.only(right: 16.0),
                         child:  _ListPesanCamilan(
-                          image: pesan["image"] ?? "",
-                          name: pesan["name"] ?? "",
-                          distance: pesan["distance"] ?? "",
-                          rating: pesan["rating"] ?? "",
-                          promo: pesan["promo"] ?? "",
-                          isAds: pesan["isAds"] ?? false,
+                          image: food.image,
+                          name: food.name,
+                          distance: food.distance,
+                          rating: food.rating,
+                          promo: food.promo,
+                          isAds: food.isAds,
                           onTapItem: () {},
                         ),
                       );
